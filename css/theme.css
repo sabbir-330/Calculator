@@ -1,0 +1,65 @@
+/* =========================================================
+   THEME — "Daylight Studio"
+   A light, airy palette: cool paper background, an ink-dark
+   display, teal operators and an amber equals key.
+   Every colour lives here. Edit this file to re-skin the app.
+   ========================================================= */
+
+:root {
+  /* Page */
+  --page: #eceff4;
+  --page-2: #f7f3ec;
+  --page-glow: rgba(255, 255, 255, 0.9);
+
+  /* Text */
+  --ink: #1b2233;
+  --ink-soft: #5b6475;
+  --focus: #0a6872;
+
+  /* Calculator body */
+  --device: #f9f7f3;
+  --device-edge: #e4dfd5;
+
+  /* Display */
+  --display-top: #242d44;
+  --display-bottom: #1b2233;
+  --display-text: #f6f2ea;
+  --display-sub: #a9b8d0;
+
+  /* Number keys */
+  --key-num: #ffffff;
+  --key-num-text: #1b2233;
+  --key-num-edge: #d9d3c7;
+
+  /* Function keys (C, ±, %) */
+  --key-fn: #e1e7ef;
+  --key-fn-text: #26324d;
+  --key-fn-edge: #c3ccda;
+
+  /* Operator keys (÷ × − +) */
+  --key-op: linear-gradient(160deg, #0d7f8a, #0a6872);
+  --key-op-text: #ffffff;
+  --key-op-edge: #07505a;
+  --key-op-solid: #0a6872;
+
+  /* Equals key */
+  --key-eq: linear-gradient(160deg, #ffcb6b, #f6a623);
+  --key-eq-text: #1b2233;
+  --key-eq-edge: #c98312;
+
+  /* Keyboard-hint chips */
+  --kbd-bg: #ffffff;
+  --kbd-edge: #d9d3c7;
+
+  /* Shadows */
+  --shadow-device: rgba(27, 34, 51, 0.30);
+  --shadow-key: rgba(27, 34, 51, 0.12);
+
+  /* Shape */
+  --radius-device: 38px;
+  --radius-display: 26px;
+
+  /* Type */
+  --font-ui: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
+}

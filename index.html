@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="A clean keyboard-friendly calculator built with plain HTML, CSS and JavaScript.">
+<meta name="theme-color" content="#eceff4">
+<title>Calculator</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<link rel="stylesheet" href="css/fonts.css">
+<link rel="stylesheet" href="css/theme.css">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<main class="app">
+
+  <aside class="info">
+    <h1 class="info__title">Calculator</h1>
+
+    <dl class="shortcuts" aria-label="Keyboard shortcuts">
+      <div><dt><kbd>0</kbd>&ndash;<kbd>9</kbd> <kbd>.</kbd></dt><dd>Type a number</dd></div>
+      <div><dt><kbd>+</kbd> <kbd>-</kbd> <kbd>*</kbd> <kbd>/</kbd></dt><dd>Operators</dd></div>
+      <div><dt><kbd>%</kbd></dt><dd>Percent</dd></div>
+      <div><dt><kbd>Enter</kbd></dt><dd>Equals</dd></div>
+      <div><dt><kbd>&#9003;</kbd></dt><dd>Delete last digit</dd></div>
+      <div><dt><kbd>Esc</kbd></dt><dd>Clear</dd></div>
+    </dl>
+  </aside>
+
+  <div class="calc" role="region" aria-label="Calculator">
+
+    <div class="calc__display" id="display">
+      <div class="calc__history" id="history" aria-hidden="true">&nbsp;</div>
+      <div class="calc__value" id="value">0</div>
+    </div>
+
+    <div class="calc__pad">
+      <button class="key key--fn" data-action="clear">C</button>
+      <button class="key key--fn" data-action="negate">±</button>
+      <button class="key key--fn" data-action="percent">%</button>
+      <button class="key key--op" data-op="÷">÷</button>
+
+      <button class="key key--num" data-num="7">7</button>
+      <button class="key key--num" data-num="8">8</button>
+      <button class="key key--num" data-num="9">9</button>
+      <button class="key key--op" data-op="×">×</button>
+
+      <button class="key key--num" data-num="4">4</button>
+      <button class="key key--num" data-num="5">5</button>
+      <button class="key key--num" data-num="6">6</button>
+      <button class="key key--op" data-op="−">−</button>
+
+      <button class="key key--num" data-num="1">1</button>
+      <button class="key key--num" data-num="2">2</button>
+      <button class="key key--num" data-num="3">3</button>
+      <button class="key key--op" data-op="+">+</button>
+
+      <button class="key key--num key--zero" data-num="0">0</button>
+      <button class="key key--num" data-action="decimal">.</button>
+      <button class="key key--eq" data-action="equals">=</button>
+    </div>
+
+  </div>
+
+</main>
+
+<script src="js/calculator.js"></script>
+</body>
+</html>

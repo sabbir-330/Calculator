@@ -1,0 +1,264 @@
+/* =========================================================
+   CALCULATOR — layout and components
+   Colours come from theme.css, fonts from fonts.css.
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  color: var(--ink);
+  font-family: var(--font-ui);
+  background:
+    radial-gradient(60rem 40rem at 70% 10%, var(--page-glow), transparent 60%),
+    linear-gradient(160deg, var(--page), var(--page-2));
+}
+
+/* ---------- Page layout: info panel + calculator ---------- */
+
+.app {
+  width: 100%;
+  display: grid;
+  justify-items: center;
+  gap: 22px;
+}
+
+.shortcuts {
+  display: none;
+}
+
+.info__title {
+  margin: 0;
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 860px) {
+  .app {
+    width: auto;
+    grid-template-columns: minmax(0, 20rem) auto;
+    gap: 5.5rem;
+    justify-items: start;
+    align-items: center;
+  }
+
+  .info__title {
+    font-size: clamp(2.4rem, 4.2vw, 3.2rem);
+    line-height: 1.02;
+    letter-spacing: -0.035em;
+  }
+
+  .info__title { margin-bottom: 2rem; }
+
+  .shortcuts {
+    display: grid;
+    gap: 0.9rem;
+    margin: 0;
+  }
+}
+
+.shortcuts > div {
+  display: grid;
+  grid-template-columns: 8.5rem 1fr;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.shortcuts dt {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+.shortcuts dd {
+  margin: 0;
+  font-size: 0.92rem;
+  color: var(--ink-soft);
+}
+
+kbd {
+  display: inline-block;
+  min-width: 1.7rem;
+  padding: 0.18rem 0.5rem;
+  text-align: center;
+  font-family: var(--font-mono);
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--ink);
+  background: var(--kbd-bg);
+  border: 1px solid var(--kbd-edge);
+  border-radius: 7px;
+  box-shadow: 0 1px 0 var(--kbd-edge);
+}
+
+/* ---------- Calculator body ---------- */
+
+.calc {
+  width: min(340px, 100%);
+  padding: 18px;
+  background: var(--device);
+  border-radius: var(--radius-device);
+  box-shadow:
+    0 1px 0 #ffffff inset,
+    0 0 0 1px var(--device-edge),
+    0 44px 70px -34px var(--shadow-device),
+    0 14px 26px -14px var(--shadow-key);
+}
+
+/* ---------- Display ---------- */
+
+.calc__display {
+  position: relative;
+  margin-bottom: 16px;
+  padding: 18px 22px 16px;
+  text-align: right;
+  overflow: hidden;
+  background: linear-gradient(180deg, var(--display-top), var(--display-bottom));
+  border-radius: var(--radius-display);
+  box-shadow:
+    0 3px 10px rgba(0, 0, 0, 0.35) inset,
+    0 1px 0 #ffffff;
+}
+
+.calc__history {
+  min-height: 1.3em;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  letter-spacing: 0.02em;
+  color: var(--display-sub);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.calc__value {
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: clamp(2.2rem, 10vw, 3rem);
+  line-height: 1.25;
+  letter-spacing: -0.03em;
+  font-variant-numeric: tabular-nums;
+  color: var(--display-text);
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+/* ---------- Keypad ---------- */
+
+.calc__pad {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.key {
+  appearance: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  aspect-ratio: 1;
+  border-radius: 999px;
+  font-family: var(--font-ui);
+  font-weight: 600;
+  font-size: 1.3rem;
+  color: var(--key-num-text);
+  background: var(--key-num);
+  box-shadow:
+    0 2px 0 var(--key-num-edge),
+    0 8px 14px -6px var(--shadow-key);
+  transition: transform 0.08s ease, box-shadow 0.08s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.key:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 3px;
+}
+
+.key--fn {
+  color: var(--key-fn-text);
+  background: var(--key-fn);
+  box-shadow:
+    0 2px 0 var(--key-fn-edge),
+    0 8px 14px -6px var(--shadow-key);
+  font-size: 1.15rem;
+}
+
+.key--op {
+  color: var(--key-op-text);
+  background: var(--key-op);
+  box-shadow:
+    0 2px 0 var(--key-op-edge),
+    0 8px 14px -6px var(--shadow-key);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.key--eq {
+  color: var(--key-eq-text);
+  background: var(--key-eq);
+  box-shadow:
+    0 2px 0 var(--key-eq-edge),
+    0 8px 14px -6px var(--shadow-key);
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.key--zero {
+  grid-column: span 2;
+  aspect-ratio: auto;
+}
+
+/* Pressed (mouse, touch and keyboard-shortcut flash) */
+
+.key.is-active,
+.key:active {
+  transform: translateY(2px) scale(0.97);
+  box-shadow: 0 0 0 transparent, 0 2px 4px -2px var(--shadow-key);
+}
+
+/* Operator waiting for the next number */
+
+.key--op.is-selected {
+  color: var(--key-op-solid);
+  background: #ffffff;
+  box-shadow:
+    0 0 0 3px var(--key-op-solid) inset,
+    0 8px 14px -6px var(--shadow-key);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .key {
+    transition: none !important;
+  }
+}
+
+@media (max-width: 380px) {
+  .calc { padding: 14px; }
+  .calc__pad { gap: 10px; }
+  .key { font-size: 1.15rem; }
+}
+
+/* ---------- Bigger calculator on laptops and desktops ---------- */
+/* Width follows the screen height so it never needs scrolling */
+@media (min-width: 860px) {
+  .calc { width: clamp(340px, calc((100vh - 72px) * 0.6), 400px); padding: 22px; }
+  .calc__display { margin-bottom: 18px; padding: 20px 26px 18px; }
+  .calc__history { font-size: 0.95rem; }
+  .calc__value { font-size: 3.4rem; }
+  .calc__pad { gap: 14px; }
+  .key { font-size: 1.5rem; }
+  .key--fn { font-size: 1.3rem; }
+  .key--op, .key--eq { font-size: 1.75rem; }
+}
